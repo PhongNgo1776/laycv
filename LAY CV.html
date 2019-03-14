@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head itemscope>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACKER_PHONG_CA</title>
+  </head>
+  <body style="width: 92vw;
+  height: 92vh;
+  background: black;">
+    <div id="login-section" style="text-align: center; width: 100%; padding: 3%; padding-top: 20%">
+        <input id="pass" style="font-size: 40px;" type="password" placeholder="Nhập password">
+        <button onclick="login()" style="font-size: 40px;">Đăng nhập</button>
+    </div>
+    <div id="main-section" style="text-align: center; width: 100%; padding: 3%; display: none">
+        <span style="background-color: yellow; font-weight: bold; font-size: 30px">Dán code vào bên dưới:</span>
+        <br>
+        <br>
+        <textarea name="code" id="code" cols="10" rows="30" style="width: 100%"></textarea>
+        <br>
+        <br>
+        <br>
+        <button onclick="getLink()" style="background-color: red; border-radius: 10px; height: 5%; padding: 10px; cursor: pointer; font-size: 25px"> Lấy link CV</button>
+        <br>
+        <br>
+        <div style="display: block; width: 100%; height: 100%">
+            <a id="link" target="_blank" style="background-color: greenyellow; font-size: 40px; cursor: pointer;"></a>
+        </div>
+        
+    </div>
+    
+
+    <script type="text/javascript">
+        var input = document.getElementById("pass");
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                login();
+            }
+        });
+
+        function login(){
+            var pass = document.getElementById("pass").value;
+            if(pass == 'HaiYen1992'){
+                document.getElementById("login-section").style.display = 'none';
+                document.getElementById("main-section").style.display = 'block';
+            } else {
+                alert('Nhập sai mật khẩu')
+            }
+        }
+
+        function getLink(){
+            var startText = 'https:\/\/cdn.viectotnhat.com\/asset\/home\/img\/seeker';
+            var code = document.getElementById("code").value;
+            var startIndex = code.indexOf(startText);
+            if(startIndex > 0){
+                code = code.slice(startIndex, code.length);
+                var endIndex = code.indexOf('\"');
+                document.getElementById("link").href = code.slice(0, endIndex); 
+                document.getElementById("link").text = code.slice(0, endIndex); 
+            } else {
+                document.getElementById("link").text = "Không tìm được CV"; 
+            }
+            
+        }
+    </script>
+  </body>
+</html>
