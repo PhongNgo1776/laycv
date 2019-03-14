@@ -34,6 +34,11 @@
     
 
     <script type="text/javascript">
+        $(document).ready(function () {
+            var params = location.href;
+            alert(params)
+        });
+
         var input = document.getElementById("pass");
         input.addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
